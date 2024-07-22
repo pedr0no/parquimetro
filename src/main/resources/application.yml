@@ -5,3 +5,6 @@ spring:
     mongodb:
       uri: mongodb+srv://root:LEiLqeb5FzeqLR89@postechfiap.zqzyfmo.mongodb.net/?retryWrites=true&w=majority&appName=PosTechFiap
       database: PosTechFiap
+server:
+  servlet:
+    contextPath: "/parkingmeter/api"
