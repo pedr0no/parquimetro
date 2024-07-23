@@ -18,7 +18,7 @@ public class DriverResponseDTO {
 	private String documentNumber;
 	private List<FormPayment> formPayment;
 	private String email;
-	private Long phoneNumber;
+	private String phoneNumber;
 	private VehicleResponseDTO vehicle;
 
 }

@@ -28,5 +28,5 @@ public class ParkingEntity {
 	private DriverEntity driverCollection;
 	@DBRef
 	private VehicleEntity vehicleCollection;
-	
+
 }

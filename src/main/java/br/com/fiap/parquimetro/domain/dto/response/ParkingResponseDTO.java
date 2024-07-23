@@ -11,8 +11,8 @@ public class ParkingResponseDTO {
 
 	private String id;
 	private String message;
+	private String departureTime;
 	private String description;
 	private DriverResponseDTO driver;
-	private VehicleResponseDTO vehicle;
 	
 }

@@ -22,7 +22,7 @@ public class DriverEntity {
 	private String documentNumber;
 	private List<FormPayment> formPayment;
 	private String email;
-	private Long phoneNumber;
+	private String phoneNumber;
 	@DBRef
 	private VehicleEntity vehicleCollection;	
 }

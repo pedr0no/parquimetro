@@ -16,6 +16,7 @@ import br.com.fiap.parquimetro.domain.dto.request.ParkingRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.request.UpdateParkingRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.response.ParkingResponseDTO;
 import br.com.fiap.parquimetro.domain.dto.response.SearchAllParkingResponseDTO;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/parking")
@@ -25,7 +26,7 @@ public class ParkingController {
 	ParkingPortIn parkingPortIn;
 
 	@PostMapping
-	ResponseEntity<ParkingResponseDTO> occupyParking(@RequestBody ParkingRequestDTO body) {
+	ResponseEntity<ParkingResponseDTO> occupyParking(@RequestBody @Valid ParkingRequestDTO body) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(parkingPortIn.occupyParking(body));
 	}
 
@@ -34,10 +35,15 @@ public class ParkingController {
 		return ResponseEntity.ok(parkingPortIn.searchAllParking());
 	}
 
-	@PatchMapping("/{idParking}")
-	ResponseEntity<ParkingResponseDTO> updateParkingTime(@RequestBody UpdateParkingRequestDTO body,
+	@GetMapping("/{idParking}")
+	ResponseEntity<ParkingResponseDTO> searchParking(@PathVariable String idParking) {
+		return ResponseEntity.ok(parkingPortIn.searchParking(idParking));
+	}
+
+	@PatchMapping("/time/{idParking}")
+	ResponseEntity<ParkingResponseDTO> updateParkingTime(@RequestBody @Valid UpdateParkingRequestDTO body,
 			@PathVariable String idParking) {
-		return null;
+		return ResponseEntity.ok(parkingPortIn.updateParkingTime(body, idParking));
 	}
 
 }

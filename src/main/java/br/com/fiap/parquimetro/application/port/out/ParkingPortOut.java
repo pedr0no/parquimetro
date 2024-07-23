@@ -9,4 +9,8 @@ public interface ParkingPortOut {
 	ParkingEntity occupyParking(ParkingEntity entity);
 	
 	List<ParkingEntity> searchAllParking();
+	
+	ParkingEntity searchParking(String id);
+	
+	ParkingEntity updateParkingTime(ParkingEntity entity, String id);
 }

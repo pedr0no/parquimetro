@@ -12,7 +12,7 @@ public class VehicleResponseDTO {
 	private String id;
 	private String model;
 	private String brand;
-	private Integer yearFabrication;
+	private String yearFabrication;
 	private String plate;
 
 }

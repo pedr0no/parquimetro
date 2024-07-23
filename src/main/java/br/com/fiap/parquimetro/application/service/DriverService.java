@@ -19,10 +19,10 @@ public class DriverService implements DriverPortIn {
 
 	@Autowired
 	DriverPortOut driverPortOut;
-	
+
 	@Autowired
 	VehiclePortOut vehiclePortOut;
-	
+
 	@Override
 	@Transactional
 	public CreateDriverResponseDTO createDriver(DriverRequestDTO request) {

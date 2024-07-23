@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.parquimetro.application.port.in.VehiclePortIn;
-import br.com.fiap.parquimetro.domain.dto.request.VehicleRequestDTO;
+import br.com.fiap.parquimetro.domain.dto.request.UpdateVehicleRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.response.SearchAllVehiclesResponseDTO;
 import br.com.fiap.parquimetro.domain.dto.response.VehicleResponseDTO;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/vehicle")
@@ -32,7 +33,7 @@ public class VehicleController {
 	}
 
 	@PatchMapping("/{idVehicle}")
-	ResponseEntity<VehicleResponseDTO> updateVehicle(@RequestBody VehicleRequestDTO body,
+	ResponseEntity<VehicleResponseDTO> updateVehicle(@RequestBody @Valid UpdateVehicleRequestDTO body,
 			@PathVariable String idVehicle) {
 		return ResponseEntity.ok(vehiclePortIn.updateVehicle(idVehicle, body));
 	}

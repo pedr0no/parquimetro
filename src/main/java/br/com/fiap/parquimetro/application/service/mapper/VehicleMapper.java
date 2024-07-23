@@ -3,6 +3,7 @@ package br.com.fiap.parquimetro.application.service.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.fiap.parquimetro.domain.dto.request.UpdateVehicleRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.request.VehicleRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.response.SearchAllVehiclesResponseDTO;
 import br.com.fiap.parquimetro.domain.dto.response.VehicleResponseDTO;
@@ -18,7 +19,16 @@ public class VehicleMapper {
 		entity.setPlate(request.getPlate());
 		return entity;
 	}
-	
+
+	public static VehicleEntity mapVehicleEntity(UpdateVehicleRequestDTO request) {
+		var entity = new VehicleEntity();
+		entity.setModel(request.getModel());
+		entity.setBrand(request.getBrand());
+		entity.setYearFabrication(request.getYearFabrication());
+		entity.setPlate(request.getPlate());
+		return entity;
+	}
+
 	public static SearchAllVehiclesResponseDTO mapSearchAllVehiclesResponse(List<VehicleEntity> entities) {
 		var vehiclesResponse = new SearchAllVehiclesResponseDTO();
 		var vehicles = new ArrayList<VehicleResponseDTO>();
@@ -29,7 +39,7 @@ public class VehicleMapper {
 		vehiclesResponse.setVehicles(vehicles);
 		return vehiclesResponse;
 	}
-	
+
 	public static VehicleResponseDTO mapVehicleResponse(VehicleEntity entity) {
 		var response = new VehicleResponseDTO();
 		response.setId(entity.getId());
@@ -39,5 +49,5 @@ public class VehicleMapper {
 		response.setYearFabrication(entity.getYearFabrication());
 		return response;
 	}
-	
+
 }

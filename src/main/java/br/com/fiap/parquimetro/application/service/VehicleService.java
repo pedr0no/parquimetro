@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import br.com.fiap.parquimetro.application.port.in.VehiclePortIn;
 import br.com.fiap.parquimetro.application.port.out.VehiclePortOut;
 import br.com.fiap.parquimetro.application.service.mapper.VehicleMapper;
-import br.com.fiap.parquimetro.domain.dto.request.VehicleRequestDTO;
+import br.com.fiap.parquimetro.domain.dto.request.UpdateVehicleRequestDTO;
 import br.com.fiap.parquimetro.domain.dto.response.SearchAllVehiclesResponseDTO;
 import br.com.fiap.parquimetro.domain.dto.response.VehicleResponseDTO;
 
@@ -27,7 +27,7 @@ public class VehicleService implements VehiclePortIn {
 	}
 
 	@Override
-	public VehicleResponseDTO updateVehicle(String idVehicle, VehicleRequestDTO body) {
+	public VehicleResponseDTO updateVehicle(String idVehicle, UpdateVehicleRequestDTO body) {
 		var entity = VehicleMapper.mapVehicleEntity(body);
 		return VehicleMapper.mapVehicleResponse(vehiclePortOut.updateVehicle(entity, idVehicle));
 	}
