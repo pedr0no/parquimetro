@@ -23,6 +23,9 @@ public class ParkingPortOutImpl implements ParkingPortOut {
 	}
 
 	@Override
+	public ParkingEntity updateParking(ParkingEntity entity) { return repository.save(entity); }
+
+	@Override
 	public List<ParkingEntity> searchAllParking() {
 		return repository.findAll();
 	}

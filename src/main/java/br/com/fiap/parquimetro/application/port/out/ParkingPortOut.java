@@ -7,7 +7,9 @@ import br.com.fiap.parquimetro.domain.entity.ParkingEntity;
 public interface ParkingPortOut {
 
 	ParkingEntity occupyParking(ParkingEntity entity);
-	
+
+	ParkingEntity updateParking(ParkingEntity entity);
+
 	List<ParkingEntity> searchAllParking();
 	
 	ParkingEntity searchParking(String id);

@@ -1,0 +1,677 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Parquimetro API",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/parkingmeter/api",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Parking",
+      "description": "Parking Controller"
+    },
+    {
+      "name": "Vehicle",
+      "description": "Vehicle Controller"
+    },
+    {
+      "name": "Driver",
+      "description": "Driver Controller"
+    }
+  ],
+  "paths": {
+    "/parking": {
+      "get": {
+        "tags": [
+          "Parking"
+        ],
+        "summary": "Search all the parks",
+        "operationId": "searchAllParkings",
+        "responses": {
+          "200": {
+            "description": "Search all the parks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAllParkingResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parking"
+        ],
+        "summary": "Ocuppy a park",
+        "operationId": "occupyParking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParkingRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Ocuppy a park",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParkingResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/driver": {
+      "get": {
+        "tags": [
+          "Driver"
+        ],
+        "summary": "Get all the drivers",
+        "operationId": "searchAllDrivers",
+        "responses": {
+          "200": {
+            "description": "Get all the drivers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAllDriversResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Driver"
+        ],
+        "summary": "Create driver and vehicle",
+        "operationId": "createDriver",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DriverRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Create driver and vehicle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDriverResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vehicle/{idVehicle}": {
+      "get": {
+        "tags": [
+          "Vehicle"
+        ],
+        "summary": "Get a specified vehicle",
+        "operationId": "searchVehicle",
+        "parameters": [
+          {
+            "name": "idVehicle",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get a specified vehicle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Vehicle"
+        ],
+        "summary": "Update a vehicle",
+        "operationId": "updateVehicle",
+        "parameters": [
+          {
+            "name": "idVehicle",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateVehicleRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update a vehicle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parking/time/{idParking}": {
+      "patch": {
+        "tags": [
+          "Parking"
+        ],
+        "summary": "Update parking time",
+        "operationId": "updateParkingTime",
+        "parameters": [
+          {
+            "name": "idParking",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateParkingRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update parking time",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParkingResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/driver/{idDriver}": {
+      "get": {
+        "tags": [
+          "Driver"
+        ],
+        "summary": "Get a driver by id",
+        "operationId": "searchDriver",
+        "parameters": [
+          {
+            "name": "idDriver",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Create driver and vehicle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DriverResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Driver"
+        ],
+        "summary": "Delete a driver by id",
+        "operationId": "deleteDriver",
+        "parameters": [
+          {
+            "name": "idDriver",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete a driver by id",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Driver"
+        ],
+        "summary": "Update a driver information by id",
+        "operationId": "updateDriver",
+        "parameters": [
+          {
+            "name": "idDriver",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDriverRequestDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Create driver and vehicle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DriverResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vehicle": {
+      "get": {
+        "tags": [
+          "Vehicle"
+        ],
+        "summary": "Get all the vehicles",
+        "operationId": "searchAllVehicles",
+        "responses": {
+          "200": {
+            "description": "Get all the vehicles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchAllVehiclesResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parking/{idParking}": {
+      "get": {
+        "tags": [
+          "Parking"
+        ],
+        "summary": "Search a specified park",
+        "operationId": "searchParking",
+        "parameters": [
+          {
+            "name": "idParking",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search a specified park",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParkingResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ParkingRequestDTO": {
+        "required": [
+          "driverId",
+          "entryTime",
+          "vehicleId"
+        ],
+        "type": "object",
+        "properties": {
+          "entryTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "inicialPayment": {
+            "maximum": 3,
+            "minimum": 3,
+            "type": "number"
+          },
+          "driverId": {
+            "type": "string"
+          },
+          "vehicleId": {
+            "type": "string"
+          }
+        }
+      },
+      "DriverResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "documentNumber": {
+            "type": "string"
+          },
+          "formPayment": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PIX",
+                "CREDIT_CARD",
+                "DEBIT_CARD",
+                "CASH"
+              ]
+            }
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/VehicleResponseDTO"
+          }
+        }
+      },
+      "ParkingResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "departureTime": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "driver": {
+            "$ref": "#/components/schemas/DriverResponseDTO"
+          }
+        }
+      },
+      "VehicleResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "yearFabrication": {
+            "type": "string"
+          },
+          "plate": {
+            "type": "string"
+          }
+        }
+      },
+      "DriverRequestDTO": {
+        "required": [
+          "email",
+          "formPayment",
+          "name",
+          "phoneNumber",
+          "vehicle"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "documentNumber": {
+            "pattern": "^(?!000|111|222|333|444|555|666|777|888|999)\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+            "type": "string"
+          },
+          "formPayment": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PIX",
+                "CREDIT_CARD",
+                "DEBIT_CARD",
+                "CASH"
+              ]
+            }
+          },
+          "email": {
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "pattern": "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$",
+            "type": "string"
+          },
+          "vehicle": {
+            "$ref": "#/components/schemas/VehicleRequestDTO"
+          }
+        }
+      },
+      "VehicleRequestDTO": {
+        "required": [
+          "model",
+          "plate"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "yearFabrication": {
+            "pattern": "^\\d{4}$",
+            "type": "string"
+          },
+          "plate": {
+            "pattern": "^([A-Z]{3}-\\d{4}|[A-Z]{3}\\d[A-Z]\\d{2})$",
+            "type": "string"
+          }
+        }
+      },
+      "CreateDriverResponseDTO": {
+        "type": "object",
+        "properties": {
+          "idDriver": {
+            "type": "string"
+          },
+          "idVehicle": {
+            "type": "string"
+          }
+        }
+      },
+      "UpdateVehicleRequestDTO": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "yearFabrication": {
+            "pattern": "^\\d{4}$",
+            "type": "string"
+          },
+          "plate": {
+            "pattern": "^([A-Z]{3}-\\d{4}|[A-Z]{3}\\d[A-Z]\\d{2})$",
+            "type": "string"
+          }
+        }
+      },
+      "UpdateParkingRequestDTO": {
+        "type": "object",
+        "properties": {
+          "updatePaymentTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatePayment": {
+            "maximum": 3,
+            "minimum": 3,
+            "type": "number"
+          }
+        }
+      },
+      "UpdateDriverRequestDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "documentNumber": {
+            "pattern": "^(?!000|111|222|333|444|555|666|777|888|999)\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+            "type": "string"
+          },
+          "formPayment": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PIX",
+                "CREDIT_CARD",
+                "DEBIT_CARD",
+                "CASH"
+              ]
+            }
+          },
+          "email": {
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "pattern": "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$",
+            "type": "string"
+          }
+        }
+      },
+      "SearchAllVehiclesResponseDTO": {
+        "type": "object",
+        "properties": {
+          "vehicles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VehicleResponseDTO"
+            }
+          }
+        }
+      },
+      "SearchAllParkingResponseDTO": {
+        "type": "object",
+        "properties": {
+          "parkings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParkingResponseDTO"
+            }
+          }
+        }
+      },
+      "SearchAllDriversResponseDTO": {
+        "type": "object",
+        "properties": {
+          "drivers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DriverResponseDTO"
+            }
+          }
+        }
+      }
+    }
+  }
+}
