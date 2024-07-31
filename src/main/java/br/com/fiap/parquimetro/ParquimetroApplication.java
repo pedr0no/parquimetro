@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import br.com.fiap.parquimetro.framework.adapter.out.db.DriverRepository;
 import br.com.fiap.parquimetro.framework.adapter.out.db.ParkingRepository;
 import br.com.fiap.parquimetro.framework.adapter.out.db.VehicleRepository;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableMongoRepositories(basePackageClasses = {
@@ -14,6 +15,7 @@ import br.com.fiap.parquimetro.framework.adapter.out.db.VehicleRepository;
 		VehicleRepository.class,
 		ParkingRepository.class
 })
+@EnableScheduling
 public class ParquimetroApplication {
 
 	public static void main(String[] args) {
